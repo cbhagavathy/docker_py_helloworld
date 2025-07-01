@@ -1,4 +1,4 @@
 [all]
-95.111.231.254 
+#95.111.231.254 
 #localhost ansible_user=credentiaa ansible_ssh_private_key_file=~/.ssh/id_rsa
-#95.111.231.254 ansible_user=credentiaa ansible_ssh_private_key_file=~/.ssh/id_rsa
+95.111.231.254 ansible_user=credentiaa ansible_ssh_private_key_file=~/.ssh/id_rsa
