@@ -1,0 +1,25 @@
+---
+- name: Deploy Flask Docker App
+  hosts: webserver
+  become: yes
+  tasks:
+    - name: Stop old container
+      shell: docker rm -f flask_hello_container || true
+
+    - name: Pull latest image (if using Docker Hub)
+      shell: docker pull cbhagavathy/flask-hello:latest
+      when: use_dockerhub | default(false)
+
+    - name: Build image (if pushing Dockerfile)
+      copy:
+        src: ../
+        dest: /home/credentiaa/flask_app
+      tags: build
+
+    - name: Build Docker image locally
+      shell: docker build -t flask-hello /home/credentiaa/flask_app
+      tags: build
+
+    - name: Run Flask container
+      shell: docker run -d -p 5000:5000 --name flask_hello_container flask-hello
+
