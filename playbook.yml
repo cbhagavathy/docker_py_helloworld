@@ -5,3 +5,8 @@
     - name: Print Hello
       debug:
         msg: 'Hello from Ansible'
+    - name: copy Dockerfile into Remote machine
+      copy:
+        src: Dockerfile
+        dest: .
+
