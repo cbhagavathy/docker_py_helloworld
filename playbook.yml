@@ -14,16 +14,16 @@
       src: requirements.txt
       dest: .
   - name: Stop the running container
-    command: docker stop helloworld_container
+    command: sudo docker stop helloworld_container
     ignore_errors: True
   - name: remove the running container
-    command: docker rm helloworld_container
+    command: sudo docker rm helloworld_container
     ignore_errors: True
   - name: remove the running image
-    command: docker rmi helloworld_image
+    command: sudo docker rmi helloworld_image
     ignore_errors: True
   - name: Create the image from Docker file
-    command: docker build -t helloworld_image .
+    command: sudo  docker build -t helloworld_image .
   - name: Create and run container
-    command: docker run -d -p 5000:5000 --name helloworld_container helloworld_image
+    command: sudo  docker run -d -p 5000:5000 --name helloworld_container helloworld_image
 
